@@ -16,16 +16,7 @@
     "pretest": "npm run compile",
     "test": "hardhat test",
     "verify": "hardhat etherscan-verify --solc-input",
-    "deploy": "hardhat deploy",
-    "mainnet:prepare": "cp .env.mainnet .env",
-    "mainnet:deploy": "npm-run-all mainnet:prepare deploy",
-    "mainnet:verify": "npm-run-all mainnet:prepare verify",
-    "goerli:prepare": "cp .env.goerli .env",
-    "goerli:deploy": "npm-run-all goerli:prepare deploy",
-    "goerli:verify": "npm-run-all goerli:prepare verify",
-    "bsc:prepare": "cp .env.bsc .env",
-    "bsc:deploy": "npm-run-all bsc:prepare deploy",
-    "bsc:verify": "npm-run-all bsc:prepare verify"
+    "deploy": "hardhat deploy"
   },
   "author": "Marcelo Morgado <cmarcelom@gmail.com>",
   "license": "MIT",

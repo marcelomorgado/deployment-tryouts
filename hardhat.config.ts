@@ -36,24 +36,8 @@ const config: HardhatUserConfig = {
     },
   },
   networks: {
-    hardhat: {
-      forking: {
-        url: `https://eth-mainnet.alchemyapi.io/v2/${ALCHEMY_API_KEY}`,
-        blockNumber: 11543930,
-      },
-    },
-    mainnet: {
-      url: `https://eth-mainnet.alchemyapi.io/v2/${ALCHEMY_API_KEY}`,
-      accounts,
-    },
-    goerli: {
-      url: `https://eth-goerli.alchemyapi.io/v2/${ALCHEMY_API_KEY}`,
-      accounts,
-    },
-    bsc: {
-      url: `https://bsc-dataseed.binance.org`,
-      accounts,
-    },
+    localhost: { saveDeployments: true },
+    hardhat: { saveDeployments: true },
   },
   spdxLicenseIdentifier: {
     overwrite: true,
