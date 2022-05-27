@@ -16,7 +16,8 @@
     "pretest": "npm run compile",
     "test": "hardhat test",
     "verify": "hardhat etherscan-verify --solc-input",
-    "deploy": "hardhat deploy"
+    "deploy": "hardhat deploy",
+    "upgrade:test": "npm run clean && hardhat run scripts/upgrade.ts --network localhost"
   },
   "author": "Marcelo Morgado <cmarcelom@gmail.com>",
   "license": "MIT",

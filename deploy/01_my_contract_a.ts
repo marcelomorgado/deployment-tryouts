@@ -6,32 +6,24 @@ const contract = "MyContract";
 const proxyAdmin = "MyProxyAdmin";
 
 const func: DeployFunction = async ({ getNamedAccounts, deployments }: HardhatRuntimeEnvironment) => {
-  const { deterministic, getOrNull, execute } = deployments;
+  const { deploy } = deployments;
   const { deployer } = await getNamedAccounts();
 
-  const alreadyDeployed = await getOrNull(proxyAdmin);
-
-  const viaAdminContract = !alreadyDeployed
-    ? proxyAdmin
-    : {
-        name: proxyAdmin,
-      };
-
-  const { address, implementationAddress, deploy } = await deterministic(name, {
-    contract,
+  const { address, implementation: implementationAddress } = await deploy(name, {
     from: deployer,
     log: true,
     proxy: {
       proxyContract: "OpenZeppelinTransparentProxy",
-      viaAdminContract,
-      implementationName: `${contract}_Implementation`,
+      viaAdminContract: proxyAdmin,
+      implementationName: contract,
+      execute: {
+        init: {
+          methodName: "initialize",
+          args: [name],
+        },
+      },
     },
-    salt: "0x01",
   });
-
-  await deploy();
-
-  await execute(name, { from: deployer, log: true }, "initialize", name);
 };
 
 export default func;
